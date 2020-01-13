@@ -13,6 +13,11 @@ public class LicenseCheckModel implements Serializable {
     private List<String> macAddress;
 
     /**
+     * 允许的IP地址
+     */
+    private List<String> ipAddress;
+
+    /**
      * 可被允许的CPU序列号
      */
     private String cpuSerial;
@@ -46,10 +51,19 @@ public class LicenseCheckModel implements Serializable {
         this.mainBoardSerial = mainBoardSerial;
     }
 
+    public List<String> getIpAddress() {
+        return ipAddress;
+    }
+
+    public void setIpAddress(List<String> ipAddress) {
+        this.ipAddress = ipAddress;
+    }
+
     @Override
     public String toString() {
         return "LicenseCheckModel{" +
                 "macAddress=" + macAddress +
+                ", ipAddress=" + ipAddress +
                 ", cpuSerial='" + cpuSerial + '\'' +
                 ", mainBoardSerial='" + mainBoardSerial + '\'' +
                 '}';

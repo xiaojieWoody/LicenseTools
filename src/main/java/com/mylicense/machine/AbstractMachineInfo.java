@@ -1,9 +1,6 @@
 package com.mylicense.machine;
 
-
-
 import com.mylicense.param.LicenseCheckModel;
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 import java.net.SocketException;
@@ -27,6 +24,7 @@ public abstract class AbstractMachineInfo {
 
         try {
             result.setMacAddress(this.getMacAddress());
+            result.setIpAddress(this.getIpAddress());
             result.setCpuSerial(this.getCPUSerial());
             result.setMainBoardSerial(this.getMainBoardSerial());
         }catch (Exception e){
@@ -43,6 +41,13 @@ public abstract class AbstractMachineInfo {
      * @throws Exception
      */
     protected abstract List<String> getMacAddress() throws Exception;
+
+    /**
+     * 获取IP
+     * @return
+     * @throws Exception
+     */
+    protected abstract List<String> getIpAddress() throws Exception;
 
     /**
      * 获取cpu序列号

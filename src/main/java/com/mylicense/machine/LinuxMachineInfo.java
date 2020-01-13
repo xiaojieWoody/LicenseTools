@@ -1,6 +1,5 @@
 package com.mylicense.machine;
 
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -22,6 +21,25 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         if (localAllInetAddress != null && localAllInetAddress.size() > 0) {
             result = localAllInetAddress.stream().map(this::getMacByInetAddress).distinct().collect(Collectors.toList());
         }
+        return result;
+    }
+
+    /**
+     * 获取IP
+     * @return
+     * @throws Exception
+     */
+    @Override
+    protected List<String> getIpAddress() throws Exception {
+        List<String> result = null;
+
+        //获取所有网络接口
+        List<InetAddress> inetAddresses = getLocalAllInetAddress();
+
+        if(inetAddresses != null && inetAddresses.size() > 0){
+            result = inetAddresses.stream().map(InetAddress::getHostAddress).distinct().map(String::toLowerCase).collect(Collectors.toList());
+        }
+
         return result;
     }
 
