@@ -25,9 +25,14 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         return result;
     }
 
+    /**
+     * CPU序列号
+     * @return
+     * @throws Exception
+     */
     @Override
     protected String getCPUSerial() throws Exception {
-        // CPU序列号
+
         String serialNumber = "";
 
         //使用dmidecode命令获取CPU序列号
@@ -35,20 +40,24 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         Process process = Runtime.getRuntime().exec(shell);
         process.getOutputStream().close();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-        String line = reader.readLine().trim();
-        if (line != null && line.length() > 0) {
-            serialNumber = line;
+        if(process.getInputStream() != null) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            if(reader.readLine() != null) {
+                serialNumber = reader.readLine().trim();
+            }
+            reader.close();
         }
 
-        reader.close();
         return serialNumber;
     }
 
+    /**
+     * 主板序列号
+     * @return
+     * @throws Exception
+     */
     @Override
     protected String getMainBoardSerial() throws Exception {
-        //主板序列号
         String serialNumber = "";
 
         //使用dmidecode命令获取主板序列号
@@ -56,14 +65,16 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         Process process = Runtime.getRuntime().exec(shell);
         process.getOutputStream().close();
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+        if(null != process.getInputStream()) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
 
-        String line = reader.readLine().trim();
-        if (line != null && line.length() > 0) {
-            serialNumber = line;
+            if(reader.readLine() != null) {
+                serialNumber = reader.readLine().trim();
+            }
+
+            reader.close();
         }
 
-        reader.close();
         return serialNumber;
     }
 }
