@@ -57,10 +57,11 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         Process process = Runtime.getRuntime().exec(shell);
         process.getOutputStream().close();
 
-        if(process.getInputStream() != null) {
+        if (process.getInputStream() != null) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            if(reader.readLine() != null) {
-                serialNumber = reader.readLine().trim();
+            String res = reader.readLine();
+            if(res != null) {
+                serialNumber = res.trim();
             }
             reader.close();
         }
@@ -82,13 +83,12 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
         Process process = Runtime.getRuntime().exec(shell);
         process.getOutputStream().close();
 
-        if(null != process.getInputStream()) {
+        if (process.getInputStream() != null) {
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-
-            if(reader.readLine() != null) {
-                serialNumber = reader.readLine().trim();
+            String res = reader.readLine();
+            if(res != null) {
+                serialNumber = res.trim();
             }
-
             reader.close();
         }
 
