@@ -10,7 +10,6 @@ public class LinuxMachineInfo extends AbstractMachineInfo {
 
     /**
      * 获取mac地址
-     *
      * @return
      * @throws Exception
      */

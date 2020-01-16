@@ -7,6 +7,11 @@ import java.util.stream.Collectors;
 
 public class WindowsMachineInfo extends AbstractMachineInfo {
 
+    /**
+     * 获取mac地址
+     * @return
+     * @throws Exception
+     */
     @Override
     protected List<String> getMacAddress() throws Exception {
         List<String> result = null;
@@ -41,9 +46,13 @@ public class WindowsMachineInfo extends AbstractMachineInfo {
         return result;
     }
 
+    /**
+     * 获取CPU序列号
+     * @return
+     * @throws Exception
+     */
     @Override
     protected String getCPUSerial() throws Exception {
-        // CPU序列号
         String serialNumber = "";
 
         //使用WMIC获取CPU序列号
@@ -63,9 +72,13 @@ public class WindowsMachineInfo extends AbstractMachineInfo {
         return serialNumber;
     }
 
+    /**
+     * 获取主板序列号
+     * @return
+     * @throws Exception
+     */
     @Override
     protected String getMainBoardSerial() throws Exception {
-        // 主板序列号
         String serialNumber = "";
 
         //使用WMIC获取主板序列号

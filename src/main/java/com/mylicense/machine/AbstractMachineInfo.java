@@ -9,11 +9,9 @@ import java.util.Enumeration;
 import java.util.List;
 
 /**
- * 获取客户服务器的基本信息，如：Mac地址、CPU序列号、主板序列号等
+ * 获取客户服务器的基本信息，如：IP、Mac地址、CPU序列号、主板序列号等
  */
 public abstract class AbstractMachineInfo {
-
-//    private static final Logger logger = LogManager.getLogger(AbstractMachineInfo.class);
 
     /**
      * 服务器信息
@@ -28,7 +26,6 @@ public abstract class AbstractMachineInfo {
             result.setCpuSerial(this.getCPUSerial());
             result.setMainBoardSerial(this.getMainBoardSerial());
         }catch (Exception e){
-//            logger.error("获取服务器硬件信息失败",e);
             e.printStackTrace();
         }
 

@@ -10,7 +10,9 @@ import com.mylicense.param.LicenseCheckModel;
 import java.io.IOException;
 import java.util.Base64;
 
-
+/**
+ * 获取windows/linux机器码
+ */
 public class MachineCodeHolder {
 
     public static void main(String[] args) throws IOException {
