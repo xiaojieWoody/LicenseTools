@@ -1,3 +1,8 @@
+import com.mylicense.config.ConfigConstant;
+
+/**
+ * 出于对执行命令install的考虑，所以将类名首字母小写
+ */
 public class install {
 
     public static void main(String[] args) {
@@ -7,9 +12,9 @@ public class install {
         // 移动文件
         if(args.length == 2) {
             // 文件路径
-            String originpath = args[0];
+            String originpath = args[1];
             // 目标路径
-            String targetpath = args[1];
+            String targetpath = ConfigConstant.LICENSE_INSTALL_PATH;
 
             if (osName.startsWith("windows")) {
                 cmd = "cmd /c move " + originpath + " " + targetpath + "\\";

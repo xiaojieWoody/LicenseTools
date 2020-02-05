@@ -7,6 +7,9 @@ import com.mylicense.param.LicenseCheckModel;
 import java.io.IOException;
 import java.util.Base64;
 
+/**
+ * 出于对执行命令print的考虑，所以将类名首字母小写
+ */
 public class print {
 
     /**

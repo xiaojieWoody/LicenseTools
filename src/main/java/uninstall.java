@@ -1,3 +1,8 @@
+import com.mylicense.config.ConfigConstant;
+
+/**
+ * 出于对执行命令uninstall的考虑，所以将类名首字母小写
+ */
 public class uninstall {
 
     public static void main(String[] args) {
@@ -6,17 +11,12 @@ public class uninstall {
         String shellCmd = null;
 
         // 删除文件
-        if(args.length == 1) {
-            // 文件路径
-            String originpath = args[0];
-            if (osName.startsWith("windows")) {
-                cmd = "cmd /c del /s/q "+originpath;
-            } else {
-                shellCmd = "rm -f " + originpath;
-            }
+        // 文件路径
+        String originpath = ConfigConstant.LICENSE_FILE_PATH;
+        if (osName.startsWith("windows")) {
+            cmd = "cmd /c del /s/q "+originpath;
         } else {
-            System.out.println("command format error!");
-            return;
+            shellCmd = "rm -f " + originpath;
         }
 
         // windows
